@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+li {
+  @apply font-bold text-xl;
+}
+
+.myFlex {
+  @apply flex justify-center items-center;
+}
