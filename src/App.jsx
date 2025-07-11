@@ -1,4 +1,5 @@
 import Button from "./components/Button";
+import Count from "./components/Count";
 import Form from "./components/Form";
 import Hersection from "./components/Hersection";
 import Navbar from "./components/Navbar";
@@ -15,7 +16,8 @@ const App = () => {
       <Button text="Login" color="blue" />
       <Button text="Read more" color="green" /> */}
 
-      <Form type="login" />
+      {/* <Form type="login" /> */}
+      <Count />
     </div>
   );
 };
