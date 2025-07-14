@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import SinglePage from "./pages/SinglePage";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
+import Form from "./components/Form";
 const App = () => {
   const Layout = () => {
     return (
@@ -20,17 +21,17 @@ const App = () => {
     );
   };
 
-  const DashboardLayout = () => {
-    return (
-      <>
-        <Topbar />
-        <div>
-          <Sidebar />
-          <Outlet />
-        </div>
-      </>
-    );
-  };
+  // const DashboardLayout = () => {
+  //   return (
+  //     <>
+  //       <Topbar />
+  //       <div>
+  //         <Sidebar />
+  //         <Outlet />
+  //       </div>
+  //     </>
+  //   );
+  // };
 
   const pageRoute = createBrowserRouter([
     {
@@ -55,19 +56,23 @@ const App = () => {
         },
       ],
     },
-    {
-      path: "/dashboard",
-      element: <DashboardLayout />,
-      children: [
-        {
-          path: "/dashboard/user-management",
-          element: <UserManagement />,
-        },
-      ],
-    },
+    // {
+    //   path: "/dashboard",
+    //   element: <DashboardLayout />,
+    //   children: [
+    //     {
+    //       path: "/dashboard/user-management",
+    //       element: <UserManagement />,
+    //     },
+    //   ],
+    // },
     {
       path: "/login",
       element: <LoginPage />,
+    },
+    {
+      path: "/register",
+      element: <Form />,
     },
     {
       path: "/single/:id",
