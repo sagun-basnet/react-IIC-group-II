@@ -10,6 +10,7 @@ import SinglePage from "./pages/SinglePage";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import Form from "./components/Form";
+import FetchAPI from "./components/FetchAPI";
 const App = () => {
   const Layout = () => {
     return (
@@ -73,6 +74,10 @@ const App = () => {
     {
       path: "/register",
       element: <Form />,
+    },
+    {
+      path: "/api-fetch",
+      element: <FetchAPI />,
     },
     {
       path: "/single/:id",
