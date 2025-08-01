@@ -11,6 +11,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import Form from "./components/Form";
 import FetchAPI from "./components/FetchAPI";
+import GetUser from "./pages/GetUser";
 const App = () => {
   const Layout = () => {
     return (
@@ -70,6 +71,10 @@ const App = () => {
     {
       path: "/login",
       element: <LoginPage />,
+    },
+    {
+      path: "/get-user",
+      element: <GetUser />,
     },
     {
       path: "/register",
