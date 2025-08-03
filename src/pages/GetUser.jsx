@@ -7,7 +7,7 @@ const GetUser = () => {
 
   const fetchUser = async () => {
     await axios
-      .get("http://192.168.1.22:5555/api/get-all-user", {
+      .get("http://192.168.1.11:5555/api/get-all-user", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

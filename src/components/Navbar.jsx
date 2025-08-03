@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 const Navbar = () => {
+  const { currentUser, logout } = useContext(AuthContext);
   return (
     <nav className="h-[5rem] bg-red-400 flex justify-between items-center px-4 ">
       <h1 className="text-[3rem] font-bold">LOGO</h1>
@@ -20,14 +22,28 @@ const Navbar = () => {
         </Link>
       </ul>
       <div className="flex gap-4">
-        <Link to="/login">
-          <button className="hover:bg-blue-700 p-2 px-4 rounded-md bg-blue-500 font-bold">
-            Login
-          </button>
-        </Link>
-        <button className="p-2 px-4 rounded-md bg-red-600 font-bold">
-          Register
-        </button>
+        {currentUser ? (
+          <div className="flex gap-4 justify-center items-center">
+            <h1>{currentUser?.name}</h1>
+            <button
+              className="hover:bg-red-700 p-2 px-4 rounded-md bg-red-500 font-bold"
+              onClick={() => logout()}
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <>
+            <Link to="/login">
+              <button className="hover:bg-blue-700 p-2 px-4 rounded-md bg-blue-500 font-bold">
+                Login
+              </button>
+            </Link>
+            <button className="p-2 px-4 rounded-md bg-red-600 font-bold">
+              Register
+            </button>
+          </>
+        )}
       </div>
     </nav>
   );

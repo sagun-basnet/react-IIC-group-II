@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -8,6 +9,8 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+
+  const { login } = useContext(AuthContext);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -25,16 +28,22 @@ const LoginPage = () => {
       return;
     }
 
-    await axios
-      .post("http://192.168.1.22:5555/api/login", formData)
-      .then((res) => {
-        console.log(res);
-        localStorage.setItem("userToken", res.data.token);
-        navigate("/get-user");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // await axios
+    //   .post("http://192.168.1.11:5555/api/login", formData)
+    //   .then((res) => {
+    //     console.log(res);
+    //     localStorage.setItem("userToken", res.data.token);
+    //     navigate("/get-user");
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
+    const res = await login(formData);
+
+    console.log(res, ":LOGIN-RES");
+
+    navigate("/");
   };
 
   return (
